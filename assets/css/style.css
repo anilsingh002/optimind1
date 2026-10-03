@@ -321,30 +321,41 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   flex-shrink: 0;
 }
 
 .logo-img-wrap {
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border-radius: 10px;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.25);
-  padding: 2px;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
-.brand-logo-img { width: 100%; height: 100%; object-fit: contain; }
-.logo-text-group { display: flex; flex-direction: column; }
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  display: block;
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .brand-name {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.55rem;
   font-weight: 800;
   letter-spacing: -0.025em;
   color: #ffffff;
@@ -354,15 +365,15 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 
 .brand-name .accent {
-  color: var(--brand-teal);
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  text-shadow: none;
 }
 
 .brand-sub {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--brand-teal);
+  color: #06b6d4;
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -770,7 +781,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 
 /* ==========================================================================
-   BENTO TECHNOLOGY MATRIX
+   BENTO TECHNOLOGY MATRIX (PERFECT ALIGNMENT)
    ========================================================================== */
 
 .tech-categories-nav {
@@ -806,22 +817,27 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .tech-bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
+  align-items: stretch;
 }
 
 .tech-bento-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 20px;
+  padding: 22px;
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(20px);
   transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .tech-bento-card:hover {
   border-color: var(--border-accent);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
@@ -829,7 +845,9 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   gap: 8px;
 }
 
@@ -845,10 +863,11 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   align-items: center;
   justify-content: center;
   color: var(--brand-blue);
+  flex-shrink: 0;
 }
 
 .tech-bento-icon svg { width: 18px; height: 18px; }
-.tech-bento-title { font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: #ffffff; }
+.tech-bento-title { font-family: var(--font-heading); font-size: 0.96rem; font-weight: 700; color: #ffffff; }
 
 .tech-bento-pill {
   font-family: var(--font-mono);
@@ -859,25 +878,51 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.3);
   color: var(--brand-amber);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.tech-chips-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.tech-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: auto;
+}
 
 .tech-chip {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(15, 23, 42, 0.9);
+  gap: 7px;
+  background: rgba(15, 23, 42, 0.75);
   border: 1px solid var(--border-light);
-  padding: 5px 10px;
+  padding: 7px 10px;
   border-radius: var(--radius-xs);
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  min-width: 0;
 }
 
-.tech-chip:hover { border-color: var(--brand-blue); color: #ffffff; background: rgba(59, 130, 246, 0.15); }
-.tech-chip svg { width: 12px; height: 12px; color: var(--brand-teal); }
+.tech-chip:hover {
+  border-color: var(--brand-blue);
+  color: #ffffff;
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+.tech-chip svg {
+  width: 13px;
+  height: 13px;
+  color: var(--brand-teal);
+  flex-shrink: 0;
+}
+
+.tech-chip span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* ==========================================================================
    DOMAIN EXPERTISE SHOWCASE
@@ -983,57 +1028,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 .industry-img-box img { width: 100%; height: auto; object-fit: cover; display: block; }
 
-/* ==========================================================================
-   PROJECT INQUIRY & CONTACT (CENTERED & COMPACT)
-   ========================================================================== */
 
-.contact-center-wrap {
-  max-width: 680px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.contact-form-wrap {
-  padding: 28px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-bottom: 16px;
-}
-
-.form-group.full-width { grid-column: 1 / -1; }
-
-.form-label {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 5px;
-}
-
-.form-input, .form-select, .form-textarea {
-  width: 100%;
-  background: var(--bg-glass-input);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-xs);
-  padding: 10px 12px;
-  color: #ffffff;
-  outline: none;
-  transition: all var(--transition-fast);
-  font-size: 0.88rem;
-}
-
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--brand-blue);
-  box-shadow: 0 0 14px rgba(59, 130, 246, 0.3);
-  background: rgba(15, 23, 42, 0.95);
-}
-
-.form-select option { background: #0f172a; color: #ffffff; }
-.form-textarea { min-height: 84px; resize: vertical; }
 
 /* ==========================================================================
    FAQ ACCORDION
@@ -1295,7 +1290,6 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   .footer-grid { grid-template-columns: 1fr; gap: 20px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
   .industry-content-card { padding: 20px 14px; }
-  .contact-form-wrap { padding: 20px 14px; }
   .floating-actions-bar { bottom: 14px; right: 14px; gap: 8px; }
   .float-action-btn { width: 40px; height: 40px; }
 }
@@ -1303,7 +1297,8 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 @media (max-width: 480px) {
   .hero-title { font-size: 1.85rem; }
   .section-title { font-size: 1.5rem; }
-  .brand-name { font-size: 1.15rem; }
-  .logo-img-wrap { width: 34px; height: 34px; }
+  .brand-name { font-size: 1.3rem; }
+  .brand-sub { font-size: 0.65rem; }
+  .logo-img-wrap { width: 40px; height: 40px; }
   .btn { width: 100%; }
 }
