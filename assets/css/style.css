@@ -961,8 +961,9 @@ button, input, select, textarea {
 .industry-tabs-wrap {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .industry-tab-btn {
