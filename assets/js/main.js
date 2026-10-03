@@ -184,7 +184,7 @@ function initHeroCanvas() {
    3. LUMINOUS SPOTLIGHT CARDS (LINEAR / VERCEL SIGNATURE GLOW)
    ========================================================================== */
 function initSpotlightCards() {
-  const cards = document.querySelectorAll('.service-card, .tech-bento-card, .glass-card, .value-card, .industry-content-card');
+  const cards = document.querySelectorAll('.service-card, .tech-bento-card, .glass-card, .value-card, .industry-content-card, .contact-card');
   
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {

@@ -1031,6 +1031,117 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 
 /* ==========================================================================
+   CONTACT SECTION (EVEN, BALANCED & MODERN)
+   ========================================================================== */
+
+.contact-section {
+  padding: 48px 0;
+  position: relative;
+}
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(20px);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.contact-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-blue);
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.contact-card-icon svg { width: 22px; height: 22px; }
+
+.contact-card-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--brand-blue);
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+.contact-card-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.contact-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.contact-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.contact-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  border-radius: var(--radius-xs);
+}
+
+.contact-meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  background: rgba(15, 23, 42, 0.6);
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-light);
+}
+
+/* ==========================================================================
    FAQ ACCORDION
    ========================================================================== */
 
@@ -1080,7 +1191,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 .faq-item.active .faq-answer { display: block; }
 
 /* ==========================================================================
-   SITE FOOTER (COMPACT & CLEAN)
+   SITE FOOTER (SYMMETRICAL & CLEAN)
    ========================================================================== */
 
 .site-footer {
@@ -1093,16 +1204,15 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
-  gap: 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   margin-bottom: 28px;
 }
 
 .footer-brand-col p {
   font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  margin: 10px 0 14px 0;
+  line-height: 1.55;
 }
 
 .footer-col-title {
@@ -1123,17 +1233,6 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 .footer-links-list a { font-size: 0.78rem; color: var(--text-muted); }
 .footer-links-list a:hover { color: var(--brand-teal); }
-
-.footer-contact-box {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 0.74rem;
-  line-height: 1.4;
-  color: var(--text-muted);
-}
-
-.footer-contact-box strong { color: #ffffff; }
 
 .footer-bottom {
   display: flex;
@@ -1284,8 +1383,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   .tech-bento-grid { grid-template-columns: 1fr; gap: 14px; }
   .value-cards-grid { grid-template-columns: 1fr; gap: 10px; }
   .industry-highlights-grid { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; gap: 12px; }
-  .form-input, .form-select, .form-textarea { font-size: 16px; }
+  .contact-cards-grid { grid-template-columns: 1fr; gap: 14px; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 20px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
