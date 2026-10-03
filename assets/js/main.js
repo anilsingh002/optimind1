@@ -186,6 +186,7 @@ function initHeroCanvas() {
    ========================================================================== */
 function initCounters() {
   const counterElements = document.querySelectorAll('.counter-val');
+  if (!counterElements.length) return;
   let animated = false;
 
   const observer = new IntersectionObserver((entries) => {
