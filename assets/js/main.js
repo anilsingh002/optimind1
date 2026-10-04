@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuickCopy();
   initFaqAccordion();
   initContactForm();
+  initPolicyModal();
 });
 
 /* ==========================================================================
@@ -431,4 +432,155 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove('show');
   }, 4500);
+}
+
+/* ==========================================================================
+   11. POLICY & LEGAL POPUP MODAL (PRIVACY, TERMS, SECURITY)
+   ========================================================================== */
+function initPolicyModal() {
+  const modal = document.getElementById('policyModal');
+  const modalTag = document.getElementById('policyModalTag');
+  const modalTitle = document.getElementById('policyModalTitle');
+  const modalBody = document.getElementById('policyModalBody');
+  const closeBtn = document.getElementById('policyModalClose');
+  const okBtn = document.getElementById('policyModalOkBtn');
+  const triggers = document.querySelectorAll('.footer-legal-btn');
+
+  if (!modal || !modalBody) return;
+
+  const policies = {
+    privacy: {
+      tag: 'Legal & Privacy Governance',
+      title: 'Privacy Policy',
+      content: `
+        <div class="policy-section">
+          <h4>1. Commitment to Data Privacy</h4>
+          <p>Optimind Labs ("we", "our", or "us") is dedicated to protecting the confidentiality and integrity of your corporate and personal information. This Privacy Policy outlines how we collect, handle, safeguard, and process information obtained through our website and engineering consulting engagements.</p>
+        </div>
+        <div class="policy-section">
+          <h4>2. Information Collection</h4>
+          <p>We collect information you voluntarily provide when initiating technical inquiries, scheduling consultations, or engaging our engineering services. This includes names, corporate email addresses, phone numbers, and project specifications. We also collect automated server diagnostics (IP address, browser type, device telemetry) solely for performance and security monitoring.</p>
+        </div>
+        <div class="policy-section">
+          <h4>3. 100% Client Intellectual Property & Confidentiality</h4>
+          <p>All source code, proprietary algorithms, database models, architecture designs, and training workflows created for client projects remain the exclusive intellectual property of the client upon milestone delivery. We operate under bilateral Non-Disclosure Agreements (NDAs) to protect all confidential proprietary systems.</p>
+        </div>
+        <div class="policy-section">
+          <h4>4. Purpose & Data Usage</h4>
+          <p>Information gathered is used exclusively to fulfill contractual services, respond to technical inquiries, facilitate communication with leadership, and maintain infrastructure reliability. We never sell, rent, monetize, or disclose your data to third-party advertisers or brokers.</p>
+        </div>
+        <div class="policy-section">
+          <h4>5. Data Protection & Encryption</h4>
+          <p>We deploy military-grade encryption standards, including AES-256 for data at rest and TLS 1.3 for data in transit. Access to client data is strictly governed by role-based access control (RBAC), multi-factor authentication (MFA), and secure sandboxed environments.</p>
+        </div>
+        <div class="policy-section">
+          <h4>6. Inquiries & Data Rights</h4>
+          <p>You have the right to request access, verification, modification, or complete deletion of your records from our systems at any time. For privacy inquiries, contact our leadership directly at <strong style="color: var(--brand-teal);">optimindlabs@gmail.com</strong> or call <strong style="color: var(--brand-amber);">+91 96502 28858</strong>.</p>
+        </div>
+      `
+    },
+    terms: {
+      tag: 'Service Agreement & Terms',
+      title: 'Terms of Service',
+      content: `
+        <div class="policy-section">
+          <h4>1. Agreement to Terms</h4>
+          <p>By accessing the Optimind Labs website or utilizing our software engineering, AI consulting, cloud infrastructure, or managed support services, you agree to comply with and be bound by these Terms of Service and all applicable laws and regulations.</p>
+        </div>
+        <div class="policy-section">
+          <h4>2. Scope of Services & Engagements</h4>
+          <p>Optimind Labs provides custom software development, artificial intelligence engineering, cloud architecture, and technical support. Specific project scope, milestones, timelines, acceptance criteria, and fee structures are formalized in individual Master Services Agreements (MSAs) and Statements of Work (SOWs).</p>
+        </div>
+        <div class="policy-section">
+          <h4>3. IP Ownership & Work-for-Hire</h4>
+          <p>Unless expressly stated otherwise in a specific SOW, all deliverables, custom software, scripts, and documentation developed specifically for the client are considered work-for-hire, and full ownership transfers to the client upon full payment of agreed fees.</p>
+        </div>
+        <div class="policy-section">
+          <h4>4. Client Cooperation & Responsibilities</h4>
+          <p>Clients agree to provide timely specifications, review feedback, and necessary development credentials to ensure smooth project progression. Unauthorized attempts to decompile, reverse-engineer, or breach Optimind Labs proprietary internal toolsets are strictly prohibited.</p>
+        </div>
+        <div class="policy-section">
+          <h4>5. Warranty & Limitation of Liability</h4>
+          <p>Our software engineering solutions are delivered according to industry-standard best practices. Optimind Labs shall not be liable for indirect, incidental, or consequential damages arising from third-party cloud provider outages, network disruptions, or unapproved third-party modifications to delivered codebases.</p>
+        </div>
+        <div class="policy-section">
+          <h4>6. Termination & Governing Law</h4>
+          <p>Either party may terminate an engagement as stipulated in the governing MSA/SOW. These terms are governed by and construed in accordance with applicable commercial and corporate laws.</p>
+        </div>
+      `
+    },
+    security: {
+      tag: 'Enterprise Security Architecture',
+      title: 'Security Policy',
+      content: `
+        <div class="policy-section">
+          <h4>1. Zero-Trust Security Architecture</h4>
+          <p>At Optimind Labs, security is a foundational engineering discipline embedded across every stage of development. We enforce a Zero-Trust architecture model across all cloud environments, repositories, and development squad workspaces.</p>
+        </div>
+        <div class="policy-section">
+          <h4>2. End-to-End Encryption</h4>
+          <p>All sensitive payloads, API communications, and database records utilize TLS 1.3 protocol encryption in transit and AES-256 encryption at rest. Cryptographic keys and cloud credentials are managed strictly via isolated hardware security modules and secret vaults.</p>
+        </div>
+        <div class="policy-section">
+          <h4>3. Strict Access Control & MFA</h4>
+          <p>Access to client repositories, staging clusters, and operational systems requires hardware-backed Multi-Factor Authentication (MFA) and least-privilege role separation. Access credentials and sessions are audited continuously and revoked automatically upon offboarding.</p>
+        </div>
+        <div class="policy-section">
+          <h4>4. Secure Software Development (SSDLC)</h4>
+          <p>Our engineering squads implement automated Static Application Security Testing (SAST), Dynamic Application Security Testing (DAST), automated dependency vulnerability scanning, and mandatory peer code reviews prior to any staging or production rollout.</p>
+        </div>
+        <div class="policy-section">
+          <h4>5. Cloud & Container Hardening</h4>
+          <p>Infrastructures are hosted in isolated Virtual Private Clouds (VPCs) with strict network ingress/egress filtering, container vulnerability scanning, and immutable Docker/Kubernetes deployment configurations.</p>
+        </div>
+        <div class="policy-section">
+          <h4>6. 24/7 Incident Response & Reporting</h4>
+          <p>We maintain automated telemetry pipelines and rapid escalation protocols for any anomalous security event. If you identify a security concern, please notify our team immediately at <strong style="color: var(--brand-teal);">optimindlabs@gmail.com</strong>.</p>
+        </div>
+      `
+    }
+  };
+
+  function openModal(policyKey) {
+    const policy = policies[policyKey];
+    if (!policy) return;
+
+    modalTag.textContent = policy.tag;
+    modalTitle.textContent = policy.title;
+    modalBody.innerHTML = policy.content;
+    modalBody.scrollTop = 0;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const policyKey = btn.getAttribute('data-policy');
+      openModal(policyKey);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (okBtn) okBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
 }
