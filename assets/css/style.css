@@ -431,10 +431,11 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   border-radius: var(--radius-full);
   border: 1px solid var(--border-medium);
   white-space: nowrap;
+  cursor: default;
+  user-select: text;
 }
 
 .nav-phone-btn svg { width: 13px; height: 13px; color: var(--brand-teal); }
-.nav-phone-btn:hover { background: rgba(6, 182, 212, 0.15); border-color: var(--brand-teal); }
 
 .menu-toggle {
   display: none;
@@ -1102,6 +1103,20 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.55;
+}
+
+.footer-leadership-card {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: border-color var(--transition-fast);
+}
+
+.footer-leadership-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
 .footer-col-title {
